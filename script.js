@@ -130,3 +130,46 @@ if (useLocationBtn) {
     }
   });
 }
+
+// Voice Search functionality
+const voiceBtn = document.getElementById('voiceSearch');
+const cityInput = document.getElementById('city');
+if (voiceBtn && cityInput) {
+  let recognition;
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+      voiceBtn.style.background = '#e0e7ff';
+      voiceBtn.style.color = '#1e3799';
+      voiceBtn.title = 'Listening...';
+    };
+    recognition.onend = () => {
+      voiceBtn.style.background = '';
+      voiceBtn.style.color = '';
+      voiceBtn.title = 'Voice search';
+    };
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      cityInput.value = transcript;
+      cityInput.focus();
+    };
+    recognition.onerror = (event) => {
+      alert('Voice recognition error: ' + event.error);
+    };
+
+    voiceBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      recognition.start();
+    });
+  } else {
+    voiceBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Sorry, your browser does not support voice recognition.');
+    });
+  }
+}
