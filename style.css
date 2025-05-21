@@ -1,5 +1,5 @@
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
   min-height: 100vh;
   margin: 0;
@@ -32,10 +32,13 @@ input[type="text"] {
   margin: 12px 0 12px 0;
   border: 1.5px solid #bdbdbd;
   border-radius: 7px;
-  width: 100%;
+  width: 90%;
+  max-width: 260px;
   font-size: 1rem;
   outline: none;
   transition: border 0.2s;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
 input[type="text"]:focus {
@@ -191,6 +194,8 @@ body.dark-mode h1 {
     padding: 10px 0;
   }
   input[type="text"] {
+    width: 100%;
+    max-width: unset;
     font-size: 0.98rem;
     padding: 10px 8px;
   }
