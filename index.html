@@ -13,9 +13,10 @@
   <div class="container">
     <h1>Moses' Weather App</h1>
     <div style="font-size:1.1rem;color:#0ba33e;margin-bottom:12px;">Welcome! ☀️ Enter a city to get the latest weather and forecast from AngaMusa.</div>
-    <input type="text" id="city" placeholder="Enter city name">
-    <button id="getWeather">Search</button>
-    <button id="toggleDarkMode">Theme</button>
+    <input type="text" id="city" placeholder="Enter city name" aria-label="City name">
+    <button id="getWeather" aria-label="Search weather">Search</button>
+    <button id="useLocation" aria-label="Use my location">Use My Location</button>
+    <button id="toggleDarkMode" aria-label="Toggle dark mode">Theme</button>
     <div id="weatherResult"></div>
     <div id="recentSearches"></div>
     <div id="forecast"></div>

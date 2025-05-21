@@ -110,3 +110,23 @@ function fetchForecast(city) {
       document.getElementById('forecast').innerHTML = `<p>${error.message}</p>`;
     });
 }
+
+// Use My Location button functionality
+const useLocationBtn = document.getElementById('useLocation');
+if (useLocationBtn) {
+  useLocationBtn.addEventListener('click', () => {
+    if (navigator.geolocation) {
+      document.getElementById('weatherResult').innerHTML = '<p>Detecting your location...</p>';
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          fetchWeather(`${lat},${lon}`);
+        },
+        (error) => {
+          document.getElementById('weatherResult').innerHTML = '<p style="color:#fc5c7d">Location access denied. Please search manually.</p>';
+        }
+      );
+    }
+  });
+}
